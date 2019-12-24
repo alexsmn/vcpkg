@@ -53,7 +53,8 @@ vcpkg_configure_cmake(
         -Dprotobuf_BUILD_TESTS=OFF
         -DCMAKE_INSTALL_CMAKEDIR:STRING=share/protobuf
         -Dprotobuf_BUILD_PROTOC_BINARIES=${protobuf_BUILD_PROTOC_BINARIES}
-         ${FEATURE_OPTIONS}
+        -Dprotobuf_USE_EXCEPTIONS=0
+        ${FEATURE_OPTIONS}
 )
 
 vcpkg_install_cmake()
