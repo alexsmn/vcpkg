@@ -23,6 +23,9 @@ vcpkg_configure_cmake(
         -DBUILD_GTEST=ON
         -DCMAKE_DEBUG_POSTFIX=d
         -Dgtest_force_shared_crt=${GTEST_FORCE_SHARED_CRT}
+        -DGTEST_LANG_CXX11=1
+        -DGTEST_HAS_TR1_TUPLE=0
+        -DGTEST_USE_OWN_TR1_TUPLE=0
 )
 
 vcpkg_install_cmake()
