@@ -328,13 +328,12 @@ else()
         file(COPY ${CMAKE_CURRENT_LIST_DIR}/qtdeploy.ps1 DESTINATION ${CURRENT_PACKAGES_DIR}/debug/plugins)
     endif()
 
-    message("#### 1 CURRENT_PACKAGES_DIR=${CURRENT_PACKAGES_DIR}")
     file(MAKE_DIRECTORY ${CURRENT_PACKAGES_DIR}/share)
-    message("#### 2 CURRENT_PACKAGES_DIR=${CURRENT_PACKAGES_DIR}")
+    file(GLOB_RECURSE UNEXPECTED_FILES "${CURRENT_PACKAGES_DIR}/share/cmake/*.*")
+    message("### UNEXPECTED_FILES: ${UNEXPECTED_FILES}")
+    file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/share/cmake)
     file(RENAME ${CURRENT_PACKAGES_DIR}/lib/cmake ${CURRENT_PACKAGES_DIR}/share/cmake)
-    message("#### 3 CURRENT_PACKAGES_DIR=${CURRENT_PACKAGES_DIR}")
     file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/lib/cmake) # TODO: check if important debug information for cmake is lost 
-    message("#### 4 CURRENT_PACKAGES_DIR=${CURRENT_PACKAGES_DIR}")
 
     #This needs a new VCPKG policy or a static angle build (ANGLE needs to be fixed in VCPKG!) 
     if(VCPKG_TARGET_IS_WINDOWS AND ${VCPKG_LIBRARY_LINKAGE} MATCHES "static") # Move angle dll libraries 

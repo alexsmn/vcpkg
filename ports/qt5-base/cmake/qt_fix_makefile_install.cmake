@@ -20,7 +20,7 @@ function(qt_fix_makefile_install BUILD_DIR)
     foreach(MAKEFILE ${MAKEFILES})
         file(READ "${MAKEFILE}" _contents)
         #Set the correct install directory to packages
-        string(REPLACE "(INSTALL_ROOT)${INSTALLED_DIR_WITHOUT_DRIVE}" "(INSTALL_ROOT)${PACKAGES_DIR_WITHOUT_DRIVE}" _contents "${_contents}")
+        string(REPLACE "C:$(INSTALL_ROOT)${INSTALLED_DIR_WITHOUT_DRIVE}" "D:$(INSTALL_ROOT)${PACKAGES_DIR_WITHOUT_DRIVE}" _contents "${_contents}")
         file(WRITE "${MAKEFILE}" "${_contents}")
     endforeach()
 endfunction()
