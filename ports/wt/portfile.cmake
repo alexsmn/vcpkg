@@ -76,8 +76,8 @@ vcpkg_fixup_cmake_targets()
 # There is no way to suppress installation of the headers and resource files in debug build.
 file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include ${CURRENT_PACKAGES_DIR}/debug/share)
 
-file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/var)
-file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/var)
+# file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/var)
+# file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/var)
 
 file(INSTALL ${SOURCE_PATH}/LICENSE DESTINATION ${CURRENT_PACKAGES_DIR}/share/${PORT} RENAME copyright)
 vcpkg_copy_pdbs()

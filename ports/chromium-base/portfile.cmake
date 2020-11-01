@@ -1,5 +1,5 @@
 vcpkg_fail_port_install(
-    ON_ARCH "x86" "arm" "arm64"
+    ON_ARCH "arm" "arm64"
     ON_TARGET "UWP")
 
 # Patches may be provided at the end
@@ -66,6 +66,7 @@ file(COPY "${RES}/fontconfig" DESTINATION "${SOURCE_PATH}/third_party")
 file(COPY "${RES}/test_fonts" DESTINATION "${SOURCE_PATH}/third_party")
 
 set(OPTIONS "\
+    target_cpu=\"${VCPKG_TARGET_ARCHITECTURE}\" \
     use_custom_libcxx=false \
     clang_use_chrome_plugins=false \
     forbid_non_component_debug_builds=false \

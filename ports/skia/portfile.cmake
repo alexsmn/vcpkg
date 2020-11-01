@@ -1,5 +1,5 @@
 vcpkg_fail_port_install(
-    ON_ARCH "x86" "arm" "arm64"
+    ON_ARCH "arm" "arm64"
     ON_TARGET "UWP" "LINUX" "ANDROID" "FREEBSD")
 
 vcpkg_from_git(
@@ -7,6 +7,7 @@ vcpkg_from_git(
     URL https://skia.googlesource.com/skia.git
     REF fb0b35fed5580d49392df7ce9374551b348fffbf
     PATCHES add-missing-tuple.patch
+            set-env-x86.patch
 )
 
 function(checkout_in_path PATH URL REF)
@@ -108,6 +109,7 @@ replace_skia_dep(libwebp "/include"
 replace_skia_dep(zlib "/include" "z,zlib,zlibd" "z,zlib" "")
 
 set(OPTIONS "\
+target_cpu=\"${VCPKG_TARGET_ARCHITECTURE}\" \
 skia_use_lua=false \
 skia_enable_tools=false \
 skia_enable_spirv_validation=false")
